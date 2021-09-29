@@ -1,0 +1,20 @@
+curl -w"\n"  http://localhost:8081/hello/
+mvn package; java -jar target/helloconfig-thorntail.jar
+
+
+@Inject
+@ConfigProperty(name = "myprop1")
+private String myprop1;
+
+myprop1=Hello From config.properties
+
+mvn package; java -jar target/helloconfig-thorntail.jar
+
+
+
+export MYPROP1="Hello from env"
+
+java -jar target/helloconfig-thorntail.jar  -Dmyprop1="Hello from system property"       
+
+
+converter -> test.myperson: '{"firstName":"Test","lastName":"User","location":"Virginia"}'
